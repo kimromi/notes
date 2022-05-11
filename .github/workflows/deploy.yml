@@ -1,0 +1,25 @@
+name: deploy
+on:
+  issues:
+    types:
+      - opened
+      - edited
+      - deleted
+      - closed
+      - reopened
+      - labeled
+      - unlabeled
+  issue_comment:
+    types:
+      - created
+      - edited
+      - deleted
+jobs:
+  deploy:
+    if: github.event.sender.login == 'kimromi'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Webhook to vercel
+        env:
+          VERCEL_WEBHOOK_URL: ${{ secrets.VERCEL_WEBHOOK_URL }}
+        run: curl -X POST "$VERCEL_WEBHOOK_URL"
