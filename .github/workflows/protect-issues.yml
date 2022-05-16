@@ -1,0 +1,16 @@
+name: Protect issues
+on:
+  issues:
+    types:
+      - opened
+  issue_comment:
+    types:
+      - created
+jobs:
+  protect-issues:
+    if: github.event.sender.login != 'kimromi'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: kimromi/issue-from-collaborators-only@main
+        with:
+          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
