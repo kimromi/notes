@@ -1,0 +1,13 @@
+.base {
+  padding: 20px;
+}
+
+.primary {
+  composes: base;
+  color: red;
+}
+
+.secondary {
+  composes: base;
+  color: blue;
+}
