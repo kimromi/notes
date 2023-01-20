@@ -12,4 +12,4 @@ jobs:
       - uses: imjohnbo/issue-bot@v3
         with:
           title: ${{ env.TODAY }}
-          labels: Blog
+          labels: Diary
